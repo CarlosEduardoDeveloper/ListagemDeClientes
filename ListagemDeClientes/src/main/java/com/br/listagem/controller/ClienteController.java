@@ -50,26 +50,19 @@ public class ClienteController {
 
 	@PostMapping
 	public ResponseEntity<Void> create(@RequestBody Cliente cliente){
-		try{
-			this.clienteService.create(cliente);
-			URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
+		this.clienteService.create(cliente);
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
 					.path("/{id}").buildAndExpand(cliente.getId()).toUri();
 		return ResponseEntity.created(uri).build();
-		} catch(Exception e){
-			return ResponseEntity.status(HttpStatus.CONFLICT).build();
-		}
+
 	}
 	
 	@PutMapping(value = "atualizar/{id}")
 	@ResponseBody
 	public ResponseEntity<Cliente> update(@PathVariable Long id, @RequestBody Cliente cliente){
-		try{
 			Cliente clienteAtualizado = clienteService.update(id, cliente);
 			return ResponseEntity.ok(clienteAtualizado);
-		} catch(Exception e){
-			return ResponseEntity.status(HttpStatus.CONFLICT).build();
 		}
-	}
 	
 	@DeleteMapping(value = "excluir/{id}")
 	@ResponseBody
