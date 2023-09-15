@@ -1,0 +1,19 @@
+package com.br.listagem.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.br.listagem.model.Cliente;
+import com.br.listagem.repository.ClienteRepository;
+
+@Service
+public class ClienteService {
+	
+	@Autowired
+	private ClienteRepository clienteRepository;
+	
+	public Cliente findById() {
+		
+	}
+
+}

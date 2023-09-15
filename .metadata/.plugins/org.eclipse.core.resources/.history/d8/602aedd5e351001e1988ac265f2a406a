@@ -1,0 +1,51 @@
+package com.br.listagem.controller;
+
+import java.net.URI;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import com.br.listagem.model.Cliente;
+import com.br.listagem.service.ClienteService;
+
+@RestController
+@RequestMapping("/cliente")
+public class ClienteController {
+	
+	@Autowired
+	private ClienteService clienteService;
+	
+	@GetMapping("/{id}")
+	public ResponseEntity<Cliente> findById(@PathVariable Long id) {
+		Cliente cliente = this.clienteService.findById(id);
+		return ResponseEntity.ok().body(cliente);
+	}
+	
+	@PostMapping
+	public ResponseEntity<Void> create(@RequestBody Cliente cliente){
+		this.clienteService.create(cliente);
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
+				.path("/{id}").buildAndExpand(cliente.getId()).toUri();
+		return ResponseEntity.created(uri).build();
+	}
+	
+	@PutMapping("/{id}")
+	public ResponseEntity<Void> update(@ResponseBody Cliente cliente, @PathVariable Long id){
+		cliente.setId(id);
+		this.clienteService.update(cliente);
+		return ResponseEntity.noContent().build();
+		
+	}
+	
+	public ResponseEntity<Void> delete(){}
+
+}

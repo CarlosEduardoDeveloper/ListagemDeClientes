@@ -1,0 +1,5 @@
+package com.br.listagem.repository;
+
+public interface ClienteRepository {
+
+}

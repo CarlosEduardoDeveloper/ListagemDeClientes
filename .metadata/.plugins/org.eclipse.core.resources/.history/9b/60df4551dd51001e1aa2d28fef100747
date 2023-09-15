@@ -1,0 +1,32 @@
+package com.br.listagem.service;
+
+import java.util.Optional;
+
+import javax.transaction.Transactional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.br.listagem.model.Cliente;
+import com.br.listagem.repository.ClienteRepository;
+
+@Service
+public class ClienteService {
+	
+	@Autowired
+	private ClienteRepository clienteRepository;
+	
+	public Cliente findById(Long id) {
+		Optional<Cliente> cliente = this.clienteRepository.findById(id);
+		return cliente.orElseThrow( () -> new RuntimeException(
+				"Cliente não encontrado! Id: " + id
+ 				));
+	}
+	
+	@Transactional
+	public Cliente create(Cliente cliente) {
+		cliente = this.clienteRepository.save(cliente);
+		return cliente;
+	}
+
+}

@@ -1,0 +1,8 @@
+package com.br.listagem.service;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class ClienteService {
+
+}
