@@ -48,7 +48,7 @@ public class Cliente {
 	private String email;
 	
 	@Column(name = "telefone", length = 14, nullable = false)
-	@Size(min = 10, max = 14)
+	@Size(min = 14, max = 15)
 	private String telefone;
 
 	@Override
