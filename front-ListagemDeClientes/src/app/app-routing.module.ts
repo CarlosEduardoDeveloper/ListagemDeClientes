@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ClientesFormComponent } from './views/clientes-form/clientes-form.component';
+import { ClientesComponent } from './views/clientes/clientes.component';
 
 const routes: Routes = [{
-  path: '', component: ClientesFormComponent
+  path: '', component: ClientesComponent
 }];
 
 @NgModule({
