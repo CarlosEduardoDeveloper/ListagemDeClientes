@@ -1,0 +1,21 @@
+h1 {
+  margin: 0;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px 200px 20px 200px;
+}
+
+.table {
+  display: flex;
+  justify-content: center;
+  padding: 0 200px;
+  margin: 0px 0px 20px 0px;
+}
+
+table {
+  width: 100%;
+}

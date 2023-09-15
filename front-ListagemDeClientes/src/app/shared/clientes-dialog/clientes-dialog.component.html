@@ -1,0 +1,29 @@
+<h1 *ngIf="isChange" mat-dialog-title>Atualizar Cliente</h1>
+<h1 *ngIf="!isChange" mat-dialog-title>Cadastrar Cliente</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <mat-label>ID</mat-label>
+    <input type="number" matInput [(ngModel)]="data.id" readonly="true" required="true">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Nome</mat-label>
+    <input matInput [(ngModel)]="data.nome" placeholder="Cliente Novo" required="true">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Sobrenome</mat-label>
+    <input matInput [(ngModel)]="data.sobrenome" placeholder="da Silva" required="true">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Email</mat-label>
+    <input matInput [(ngModel)]="data.email" placeholder="email@email.com.br" required="true" type="email">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Telefone</mat-label>
+    <input matInput mask="(00)00000-0000" [(ngModel)]="data.telefone" placeholder="85987654321">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancelar</button>
+  <button *ngIf="isChange" mat-button color="primary" [mat-dialog-close]="data" cdkFocusInitial>Atualizar</button>
+  <button *ngIf="!isChange" mat-button color="primary" [mat-dialog-close]="data" cdkFocusInitial>Cadastrar</button>
+</div>
